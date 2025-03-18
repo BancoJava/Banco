@@ -5,6 +5,7 @@ import java.util.Date;
 public class CadastroConta {
 
     private Long numeroAgencia;
+    private Long id;
     private String nome;
     private int cpf;
     private Date date;
@@ -19,6 +20,14 @@ public class CadastroConta {
 
     public void setNumeroAgencia(Long numeroAgencia) {
         this.numeroAgencia = numeroAgencia;
+    }
+
+    public Long getId(Long id) {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -77,9 +86,11 @@ public class CadastroConta {
         this.tipo = tipo;
     }
 
-    public CadastroConta(Long numeroAgencia, String nome, int cpf, Date date, double saldoInicial, double valor,
+    public CadastroConta(Long numeroAgencia, Long id, String nome, int cpf, Date date, double saldoInicial,
+            double valor,
             boolean ativa, String tipo) {
         this.numeroAgencia = numeroAgencia;
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.date = date;

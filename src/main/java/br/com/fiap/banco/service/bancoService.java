@@ -3,11 +3,9 @@ package br.com.fiap.banco.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.fiap.banco.model.CadastroConta;
-import br.com.fiap.banco.controller.CadastroContaController;
 
 @Service
 public class bancoService {
@@ -45,11 +43,11 @@ public class bancoService {
         return save(conta);
     }
 
-    // Transferência (PIX)
+    // Pix
     public CadastroConta transferir(int cpfOrigem, int cpfDestino, double valor) {
-        // Procurar a conta de origem
+
         CadastroConta contaOrigem = findById(cpfOrigem);
-        // Procurar a conta de destino
+
         CadastroConta contaDestino = findById(cpfDestino);
 
         if (valor <= 0) {
