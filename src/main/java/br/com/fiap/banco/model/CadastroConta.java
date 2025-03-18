@@ -9,6 +9,7 @@ public class CadastroConta {
     private int cpf;
     private Date date;
     private double saldoInicial;
+    private double valor;
     private boolean ativa;
     private String tipo;
 
@@ -52,6 +53,14 @@ public class CadastroConta {
         this.saldoInicial = saldoInicial;
     }
 
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
     public boolean isAtiva() {
         return ativa;
     }
@@ -68,15 +77,41 @@ public class CadastroConta {
         this.tipo = tipo;
     }
 
-    public CadastroConta(Long numeroAgencia, String nome, int cpf, Date date, double saldoInicial, boolean ativa,
-            String tipo) {
+    public CadastroConta(Long numeroAgencia, String nome, int cpf, Date date, double saldoInicial, double valor,
+            boolean ativa, String tipo) {
         this.numeroAgencia = numeroAgencia;
         this.nome = nome;
         this.cpf = cpf;
         this.date = date;
         this.saldoInicial = saldoInicial;
+        this.valor = valor;
         this.ativa = ativa;
         this.tipo = tipo;
+
+    }
+
+    // Depositar
+    public void depositar(double Valor) {
+        saldoInicial += Valor;
+    }
+
+    // Sacar
+    public boolean sacar(double valor) {
+        if (valor <= 0 || valor > saldoInicial) {
+            return false;
+        } else
+            saldoInicial -= valor;
+        return true;
+    }
+
+    // Pix
+    public boolean transferir(CadastroConta contaTransfe, double valor) {
+        if (this.sacar(valor)) {
+            contaTransfe.depositar(valor);
+            return true;
+        }
+        return false;
+
     }
 
 }
